@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {IArticulo} from "../../interfaces/i-articulo";
 import {DataService} from "../../services/data.service";
-import {CargarArticulosService} from "../../services/cargar-articulos.service";
 
 @Component({
   selector: 'app-redactar',
@@ -20,10 +19,10 @@ export class RedactarComponent implements OnInit {
   // @ts-ignore
   categoriaSeleccionada = "Estudios";
 
-  constructor(private cargarArticulos: CargarArticulosService, private dataService: DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.cargarArticulos.getArticulos().subscribe(listaArticulos => {
+    this.dataService.getArticulos().subscribe(listaArticulos => {
       this.articulos = listaArticulos;
     }, error => console.log(error), () => console.log('Fin de observable'));
   }

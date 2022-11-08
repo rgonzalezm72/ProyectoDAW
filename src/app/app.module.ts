@@ -14,13 +14,11 @@ import { RouterModule } from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import { InicioComponent } from './components/inicio/inicio.component';
 import { PreviewArticuloComponent } from './components/preview-articulo/preview-articulo.component';
-import {CargarArticulosService} from "./services/cargar-articulos.service";
 import { ContenidoArticuloComponent } from './components/contenido-articulo/contenido-articulo.component';
 import { RedactarComponent } from './components/redactar/redactar.component';
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
 import {DataService} from "./services/data.service";
 import {CookieService} from "ngx-cookie-service";
-import {CargarUsuariosService} from "./services/cargar-usuarios.service";
 
 
 @NgModule({
@@ -56,7 +54,7 @@ import {CargarUsuariosService} from "./services/cargar-usuarios.service";
       {path: '**', redirectTo: '/inicio', pathMatch:'full'},
     ])
   ],
-  providers: [CargarArticulosService,CargarUsuariosService,DataService,CookieService],
+  providers: [DataService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
