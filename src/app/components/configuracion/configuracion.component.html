@@ -1,0 +1,19 @@
+<form  #formularioConfiguracionUsuario="ngForm" (ngSubmit)="configurarUsuario(formularioConfiguracionUsuario)">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombre" value="{{usuario.nombre}}" required ngModel>
+  </div>
+  <div class="mb-3">
+    <label for="apellidos" class="form-label">Apellidos</label>
+    <input type="text" class="form-control" id="apellidos" name="apellidos" aria-describedby="apellidos" value="{{usuario.apellidos}}" required ngModel>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email" aria-describedby="email" value="{{usuario.email}}" required ngModel>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" id="password" name="password" value="{{usuario.password}}" required ngModel>
+  </div>
+  <button type="submit" class="btn btn-primary">Registrarse</button>
+</form>

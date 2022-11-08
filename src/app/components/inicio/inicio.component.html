@@ -1,0 +1,58 @@
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <h1>Younghelp</h1>
+  <br>
+  <h3>El futuro está en tus manos, y nosotros te ayudaremos a orientarlo</h3>
+</div>
+<div id="carouselSecciones" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselSecciones" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Desarrollo Personal"></button>
+    <button type="button" data-bs-target="#carouselSecciones" data-bs-slide-to="1" aria-label="Contacto"></button>
+    <button type="button" data-bs-target="#carouselSecciones" data-bs-slide-to="2"
+            aria-label="Sobre Nosotros"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../assets/img/desarrollo_personal.jpg" class="d-block w-100" alt="Desarrollo Personal">
+      <br>
+      <div class="carousel-caption d-none d-md-block">
+        <h2 class="text-black">Desarrollo Personal</h2>
+        <p class="text-black">Artículos sobre diferentes temáticas que te ayudarán a desarrollar tu futuro</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/img/contacto.jpg" class="d-block w-100" alt="Contacto">
+      <br>
+      <div class="carousel-caption d-none d-md-block">
+        <h2 class="text-black">Contacto</h2>
+        <p class="text-black">Ponte en contacto con nuestros expertos para resolver alguna duda en específico</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/img/sobre_nosotros.jpg" class="d-block w-100" alt="Sobre Nosotros">
+      <br>
+      <div class="carousel-caption d-none d-md-block">
+        <h2 class="text-black">Sobre Nosotros</h2>
+        <p class="text-black">Más información sobre nuestra página y nuestro equipo</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselSecciones" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselSecciones" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+<br>
+<div class="row">
+  <div class="d-flex justify-content-center">
+    <h1>Últimos Artículos</h1>
+  </div>
+  <hr>
+  <div class="col-md-12 col-lg-12">
+    <app-preview-articulo *ngFor="let articulo of articulos; let i = index" [articulo]="articulo" [usuarios]="usuarios"></app-preview-articulo>
+  </div>
+</div>

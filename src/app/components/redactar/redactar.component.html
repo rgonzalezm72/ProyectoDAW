@@ -1,0 +1,17 @@
+<form  #formularioRedactar="ngForm" (ngSubmit)="subirArticulo(formularioRedactar)">
+  <div class="mb-3">
+    <label for="titulo" class="form-label">Título</label>
+    <input type="text" class="form-control" id="titulo" name="titulo" aria-describedby="nombre" required ngModel>
+  </div>
+  <div class="mb-3">
+    <label for="categoria" class="form-label">Título</label>
+    <select class="col-12" id="categoria" name="categoria"  [(ngModel)]="categoriaSeleccionada">
+      <option *ngFor="let categoria of categorias, let i = index" [ngValue]="categoria">{{categorias[i]}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="contenido" class="form-label">Contenido</label>
+    <textarea class="form-control" id="contenido" name="contenido" aria-describedby="contendio" rows="20" cols="20" required ngModel></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Subir</button>
+</form>

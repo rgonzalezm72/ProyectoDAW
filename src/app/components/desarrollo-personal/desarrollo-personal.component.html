@@ -1,0 +1,14 @@
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <h1>Desarrollo Personal</h1>
+  <br>
+  <h3>Artículos para ayudarte a formar un futuro mejor</h3>
+</div>
+<hr>
+<div class="col-md-12 col-lg-12">
+  <select class="col-12" id="categoria"  [(ngModel)]="categoriaSeleccionada" (click)="cargarListaArticulos()">
+    <option *ngFor="let categoria of categorias, let i = index" [ngValue]="categoria">{{categorias[i]}}</option>
+  </select>
+</div>
+<div class="col-md-12 col-lg-12">
+  <app-preview-articulo *ngFor="let articulo of articulosFiltrados; let i = index" [articulo]="articulo"></app-preview-articulo>
+</div>
