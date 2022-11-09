@@ -22,9 +22,6 @@ export class InicioComponent implements OnInit {
     this.dataService.getArticulos().subscribe(listaArticulos => {
       this.articulos = listaArticulos;
     }, error => console.log(error), () => console.log('Fin de observable'));
-    this.dataService.getUsuarios().subscribe(listaUsuarios => {
-      this.usuarios = listaUsuarios;
-    }, error => console.log(error), () => console.log('Fin de observable'));
   }
 
 }

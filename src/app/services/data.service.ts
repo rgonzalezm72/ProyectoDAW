@@ -109,13 +109,17 @@ export class DataService {
     return this.http.get<IArticulo[]>(this.URLArticulos);
   }
 
+  getArticulo(id:string) : Observable<IArticulo> {
+    return this.http.get<IArticulo>('https://younghelp-ea422-default-rtdb.europe-west1.firebasedatabase.app/articulos/' + id + ".json");
+  }
+
   getUsuarios(): Observable<IUsuario[]> {
     return this.http.get<IUsuario[]>(this.URLUsuarios);
   }
 
-   getUsuario(id:string) : Observable<IUsuario> {
+  getUsuario(id:string) : Observable<IUsuario> {
      return this.http.get<IUsuario>('https://younghelp-ea422-default-rtdb.europe-west1.firebasedatabase.app/usuarios/' + id + ".json");
-   }
+  }
 
    subirArticulo(titulo: string, categoria: string, contenido: string, numeroArticulos : number){
      firebase.database().ref().child("articulos").child((numeroArticulos).toString()).set({
