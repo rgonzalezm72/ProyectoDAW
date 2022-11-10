@@ -12,15 +12,13 @@ import firebase from "firebase/compat/app";
 export class ConfiguracionComponent implements OnInit {
 
   // @ts-ignore
-  usuario : IUsuario;
+  usuario : IUsuario = null;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     // @ts-ignore
-    this.dataService.getUsuario(firebase.auth().currentUser?.uid).subscribe(usuario => {
-      this.usuario = usuario;
-    });
+    this.dataService.getUsuario(firebase.auth().currentUser?.uid).subscribe( usuario => this.usuario = usuario);
   }
 
   configurarUsuario(form: NgForm) {

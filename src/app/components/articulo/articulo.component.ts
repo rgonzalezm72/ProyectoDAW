@@ -29,11 +29,7 @@ export class ArticuloComponent implements OnInit {
     this.route.params.subscribe(params => this.idArticulo = params['id']);
     this.dataService.getArticulo(this.idArticulo).subscribe(articulo => {
       this.articulo = articulo;
-      fetch('https://younghelp-ea422-default-rtdb.europe-west1.firebasedatabase.app/usuarios/' + this.articulo.idAutor + '.json').then(
-        respuesta => respuesta.json()
-      ).then(data => this.autor = data).catch(
-        error => console.log(error.message)
-      );
+      this.dataService.getUsuario(this.articulo.idAutor).subscribe( usuario => this.autor = usuario);
     });
   }
 

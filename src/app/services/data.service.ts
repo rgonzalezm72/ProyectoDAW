@@ -124,7 +124,7 @@ export class DataService {
    subirArticulo(titulo: string, categoria: string, contenido: string, numeroArticulos : number){
      firebase.database().ref().child("articulos").child((numeroArticulos).toString()).set({
        contenido: contenido.split('\n'),
-       id: (numeroArticulos + 1).toString(),
+       id: (numeroArticulos).toString(),
        idAutor: firebase.auth().currentUser?.uid,
        seccion: categoria,
        titulo: titulo

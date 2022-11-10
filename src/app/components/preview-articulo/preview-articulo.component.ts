@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {IArticulo} from "../../interfaces/i-articulo";
 import {IUsuario} from "../../interfaces/i-usuario";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-preview-articulo, [app-preview-articulo]',
@@ -15,14 +16,10 @@ export class PreviewArticuloComponent implements OnInit {
   // @ts-ignore
   autor: IUsuario = null;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    fetch('https://younghelp-ea422-default-rtdb.europe-west1.firebasedatabase.app/usuarios/' + this.articulo.idAutor + '.json').then(
-      respuesta => respuesta.json()
-    ).then(data => this.autor = data).catch(
-      error => console.log(error.message)
-    );
+    this.dataService.getUsuario(this.articulo.idAutor).subscribe( usuario => this.autor = usuario);
   }
 
 }
