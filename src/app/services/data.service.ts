@@ -86,16 +86,22 @@ export class DataService {
    }
 
    configurarUsuario(nombre:string, apellidos:string, email: string, password: string) {
-     // @ts-ignore
-     firebase.database().ref().child("usuarios").child(firebase.auth().currentUser?.uid).update({
-       apellidos: apellidos,
-       email: email,
-       nombre: nombre,
-       password: password
-     });
-     firebase.auth().currentUser?.updateEmail(email);
-     firebase.auth().currentUser?.updatePassword(password);
-     this.router.navigate(['/']);
+     firebase.auth().currentUser?.getIdToken(true).then(
+       token => {
+         this.token = token;
+         this.cookies.set("token",this.token);
+         firebase.auth().currentUser?.updateEmail(email);
+         firebase.auth().currentUser?.updatePassword(password);
+         // @ts-ignore
+         firebase.database().ref().child("usuarios").child(firebase.auth().currentUser?.uid).update({
+           apellidos: apellidos,
+           email: email,
+           nombre: nombre,
+           password: password
+         });
+         this.router.navigate(['/configuracion']);
+       }
+     );
    }
 
    borrarUsuario() {
