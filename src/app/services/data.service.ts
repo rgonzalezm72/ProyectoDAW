@@ -86,23 +86,26 @@ export class DataService {
    }
 
    configurarUsuario(nombre:string, apellidos:string, email: string, password: string) {
-     firebase.auth().currentUser?.getIdToken().then(
-       token => {
-         this.token = token;
-         this.cookies.set("token",this.token);
-         // @ts-ignore
-         this.idUsuario = firebase.auth().currentUser?.uid;
-         firebase.auth().currentUser?.updateEmail(email);
-         firebase.auth().currentUser?.updatePassword(password);
-         firebase.database().ref().child("usuarios").child(this.idUsuario).update({
-           apellidos: apellidos,
-           email: email,
-           nombre: nombre,
-           password: password
-         });
-         this.router.navigate(['/configuracion']);
-       }
-     );
+     // @ts-ignore
+     firebase.database().ref().child("usuarios").child(firebase.auth().currentUser?.uid).update({
+       apellidos: apellidos,
+       email: email,
+       nombre: nombre,
+       password: password
+     });
+     firebase.auth().currentUser?.updateEmail(email);
+     firebase.auth().currentUser?.updatePassword(password);
+     this.router.navigate(['/']);
+   }
+
+   borrarUsuario() {
+     // @ts-ignore
+     this.idUsuario = firebase.auth().currentUser?.uid;
+     firebase.database().ref().child("usuarios").child(this.idUsuario).remove();
+     firebase.auth().currentUser?.delete();
+     this.token = "";
+     this.cookies.set("token",this.token);
+     this.router.navigate(['/']);
    }
 
   getArticulos(): Observable<IArticulo[]> {

@@ -29,4 +29,7 @@ export class ConfiguracionComponent implements OnInit {
     this.dataService.configurarUsuario(nombre, apellidos, email, password);
   }
 
+  borrarUsuario() {
+    this.dataService.borrarUsuario();
+  }
 }

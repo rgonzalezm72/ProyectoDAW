@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { DesarrolloPersonalComponent } from './components/desarrollo-personal/desarrollo-personal.component';
@@ -11,14 +11,14 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ArticuloComponent } from './components/articulo/articulo.component';
 
 import { RouterModule } from "@angular/router";
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { InicioComponent } from './components/inicio/inicio.component';
 import { PreviewArticuloComponent } from './components/preview-articulo/preview-articulo.component';
 import { ContenidoArticuloComponent } from './components/contenido-articulo/contenido-articulo.component';
 import { RedactarComponent } from './components/redactar/redactar.component';
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
-import {DataService} from "./services/data.service";
-import {CookieService} from "ngx-cookie-service";
+import { DataService } from "./services/data.service";
+import { CookieService } from "ngx-cookie-service";
 
 
 @NgModule({
