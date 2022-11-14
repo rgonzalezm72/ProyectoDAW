@@ -48,12 +48,12 @@
     </div>
   </div>
 </header>
-<div class="cookie-consent">
-  <span>Este sitio utiliza cookies para mejorar la experiencia del usuario. Ver <a href="#" class="ml-1 text-primary text-decoration-none">Política de Privacidad</a></span>
-  <div class="mt-2 d-flex align-items-center justify-content-between g-2">
-    <button class="bg-primary allow-button mr-1">Permitir</button>
-    <button class="bg-primary allow-button">Cancelar</button>
-  </div>
+<div id="cb-cookie-banner" class="alert alert-dark text-center mb-0" role="alert" style="display: block;">
+  Este sitio web utiliza cookies para asegurarse de que el usuario tiene la mejor experiencia posible.
+  <a href="#" target="blank">Aprender más</a>
+  <button type="button" class="btn btn-primary btn-sm ms-3" onclick="window.cb_hideCookieBanner()">
+    Acepto
+  </button>
 </div>
 <div class="container">
 <router-outlet></router-outlet>
