@@ -4,7 +4,7 @@
     <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i
       class="fa fa-bars"></i></button>
-    <div class="collapse navbar-collapse" id="navbarResponsiveNoUser" *ngIf="!estaLogueado()">
+    <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="!estaLogueado()">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" [routerLink]="['/desarrollo-personal']" [routerLinkActive]="['active']">Desarrollo Personal</a></li>
@@ -12,7 +12,7 @@
         <li class="nav-item"><a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']">Iniciar Sesión</a></li>
       </ul>
     </div>
-    <div class="collapse navbar-collapse" id="navbarResponsiveUser" *ngIf="estaLogueado() && esUsuario()">
+    <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="estaLogueado() && esUsuario()">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" [routerLink]="['/desarrollo-personal']" [routerLinkActive]="['active']">Desarrollo Personal</a></li>
@@ -22,7 +22,7 @@
         <li class="nav-item"><a class="nav-link" (click)="cerrarSesion()">Cerrar Sesión</a></li>
       </ul>
     </div>
-    <div class="collapse navbar-collapse" id="navbarResponsiveAdminUser" *ngIf="estaLogueado() && esAdmin()">
+    <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="estaLogueado() && esAdmin()">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" [routerLink]="['/desarrollo-personal']" [routerLinkActive]="['active']">Desarrollo Personal</a></li>
