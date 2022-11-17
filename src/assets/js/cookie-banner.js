@@ -28,9 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if(isCookieAccepted === null)  {
       localStorage.setItem("cb_isCookieAccepted", "no");
       mostrarCookieBanner();
-    }
-    if(isCookieAccepted === "no") {
+    } else if(isCookieAccepted === "no") {
       mostrarCookieBanner();
+    } else {
+      ocultarCookieBanner();
     }
   }
 
