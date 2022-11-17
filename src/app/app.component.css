@@ -7,6 +7,10 @@
   height: 200px;
 }
 
+.masthead * {
+  height: 200px;
+}
+
 @media (max-width: 991px) {
   .logo {
     width: 100px;
@@ -15,4 +19,8 @@
     background-image: none;
     height: 100px;
   }
+  .masthead * {
+    height: 100px;
+  }
+
 }
