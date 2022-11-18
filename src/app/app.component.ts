@@ -20,7 +20,12 @@ export class AppComponent implements OnInit {
     firebase.initializeApp({
       apiKey: "AIzaSyA5d0I57rVE1CSr6yxpD8vv_K0C6bOz1YI",
       authDomain: "younghelp-ea422.firebaseapp.com",
-      databaseURL: "https://younghelp-ea422-default-rtdb.europe-west1.firebasedatabase.app/"
+      databaseURL: "https://younghelp-ea422-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "younghelp-ea422",
+      storageBucket: "younghelp-ea422.appspot.com",
+      messagingSenderId: "833119907407",
+      appId: "1:833119907407:web:fa07a4b71075df5506043a",
+      measurementId: "G-E6498DN3F8"
     });
   }
 

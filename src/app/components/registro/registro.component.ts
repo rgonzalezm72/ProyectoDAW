@@ -19,7 +19,7 @@ export class RegistroComponent implements OnInit {
     const apellidos = form.value.apellidos;
     const email = form.value.email;
     const password = form.value.password;
-    this.dataService.registrarUsuario(nombre, apellidos, email, password);
+    this.dataService.registrarUsuario(nombre, apellidos, email, password, "usuario");
   }
 
 }
