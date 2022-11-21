@@ -19,6 +19,8 @@ import { RedactarComponent } from './components/redactar/redactar.component';
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
 import { DataService } from "./services/data.service";
 import { CookieService } from "ngx-cookie-service";
+import {AuthGuardService as AuthGuard} from "./services/authguard.service";
+import {RoleGuardService as RoleGuard} from "./services/roleguard.service";
 
 
 @NgModule({
@@ -44,17 +46,17 @@ import { CookieService } from "ngx-cookie-service";
       {path: 'inicio', component: InicioComponent},
       {path: 'desarrollo-personal', component: DesarrolloPersonalComponent},
       {path: 'desarrollo-personal/:id', component: ArticuloComponent},
-      {path: 'contacto', component: ContactoComponent},
+      {path: 'contacto', component: ContactoComponent, canActivate: [AuthGuard]},
       {path: 'sobre-nosotros', component: SobreNosotrosComponent},
       {path: 'login', component: IniciarSesionComponent},
       {path: 'registro', component: RegistroComponent},
-      {path: 'redactar', component: RedactarComponent},
-      {path: 'configuracion', component: ConfiguracionComponent},
+      {path: 'redactar', component: RedactarComponent, canActivate: [RoleGuard]},
+      {path: 'configuracion', component: ConfiguracionComponent, canActivate: [AuthGuard]},
       {path: '', redirectTo: '/inicio', pathMatch:'full'},
       {path: '**', redirectTo: '/inicio', pathMatch:'full'},
     ])
   ],
-  providers: [DataService,CookieService],
+  providers: [DataService,CookieService, AuthGuard, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
