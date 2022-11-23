@@ -18,6 +18,9 @@ export class PreviewArticuloComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+  /**
+   * Al iniciarse se cargan los datos del autor del artículo en cuestión usando para ello el DataService
+   */
   ngOnInit(): void {
     this.dataService.getUsuario(this.articulo.idAutor).subscribe( usuario => this.autor = usuario);
   }

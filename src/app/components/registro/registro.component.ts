@@ -14,6 +14,11 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Según los valores que ponemos en el formulario nos registraremos en la web
+   * creándose con ello un nuevo usuario usando el método para ello del DataService
+   * @param form - Formulario para registrarse en la página web
+   */
   registrarUsuario(form: NgForm) {
     const nombre = form.value.nombre;
     const apellidos = form.value.apellidos;

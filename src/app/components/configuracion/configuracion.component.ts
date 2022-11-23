@@ -16,11 +16,19 @@ export class ConfiguracionComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+  /**
+   * Obtenemos los datos del usuario según el ID del usuario con el que hemos iniciado sesión
+   */
   ngOnInit(): void {
     // @ts-ignore
     this.dataService.getUsuario(firebase.auth().currentUser?.uid).subscribe( usuario => this.usuario = usuario);
   }
 
+  /**
+   * Según los valores que ponemos en el formulario modificamos el usuario con el que hemos iniciado sesión
+   * usando el método para ello del DataService
+   * @param form - Formulario para modificar el usuario
+   */
   configurarUsuario(form: NgForm) {
     const nombre = form.value.nombre;
     const apellidos = form.value.apellidos;
@@ -29,6 +37,9 @@ export class ConfiguracionComponent implements OnInit {
     this.dataService.configurarUsuario(nombre, apellidos, email, password);
   }
 
+  /**
+   * Borramos directamente el usuario usando el método para ello del DataService
+   */
   borrarUsuario() {
     this.dataService.borrarUsuario();
   }

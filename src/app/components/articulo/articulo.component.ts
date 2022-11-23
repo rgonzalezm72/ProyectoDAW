@@ -25,6 +25,10 @@ export class ArticuloComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
+  /**
+   * Obtenemos el artículo a cargar en cuestión junto con su autor
+   * según el ID del artículo en la ruta de la página usando el DataService
+   */
   ngOnInit(): void {
     this.route.params.subscribe(params => this.idArticulo = params['id']);
     this.dataService.getArticulo(this.idArticulo).subscribe(articulo => {

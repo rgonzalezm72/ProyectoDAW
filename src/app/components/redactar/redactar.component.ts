@@ -21,12 +21,21 @@ export class RedactarComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+  /**
+   * Al iniciarse se obtiene la lista de artículos usando para ello el DataService
+   * con tal de obtener la cantidad de artículos que tiene la página web
+   */
   ngOnInit(): void {
     this.dataService.getArticulos().subscribe(listaArticulos => {
       this.articulos = listaArticulos;
     }, error => console.log(error), () => console.log('Fin de observable'));
   }
 
+  /**
+   * Según los valores que ponemos en el formulario escribiremos un nuevo artículo
+   * usando el método para ello del DataService
+   * @param form - Formulario para escribir un nuevo artículo
+   */
   subirArticulo(form: NgForm) {
     const titulo = form.value.titulo;
     const categoria = this.categoriaSeleccionada;

@@ -6,6 +6,9 @@ export class AuthGuardService implements CanActivate {
 
   constructor(public router: Router) { }
 
+  /**
+   * Método para proteger las rutas exclusivas para usuarios registrados en caso de que no se haya iniciado sesión
+   */
   canActivate(): boolean {
     if (firebase.auth().currentUser === null) {
       this.router.navigate(['login']);

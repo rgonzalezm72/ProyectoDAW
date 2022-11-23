@@ -11,6 +11,9 @@ export class RoleGuardService implements CanActivate {
   // @ts-ignore
   usuario: IUsuario = null;
 
+  /**
+   * Método para proteger las rutas exclusivas para admins en caso de que se haya o no iniciado sesión
+   */
   canActivate(): boolean {
     // @ts-ignore
     this.dataService.getUsuario(firebase.auth().currentUser?.uid).subscribe(datosUsuario => this.usuario = datosUsuario);

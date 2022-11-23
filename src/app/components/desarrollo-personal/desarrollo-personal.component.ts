@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IArticulo} from "../../interfaces/i-articulo";
 import {DataService} from "../../services/data.service";
 import {IUsuario} from "../../interfaces/i-usuario";
@@ -27,10 +27,16 @@ export class DesarrolloPersonalComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+  /**
+   * Al iniciarse se cargan los artículos mediante el método en cuestión
+   */
   ngOnInit(): void {
     this.cargarListaArticulos();
   }
 
+  /**
+   * Método con el cual se carga la lista de artículos correspondiente usando el DataService
+   */
   cargarListaArticulos(): void {
     this.dataService.getArticulos().subscribe(listaArticulos => {
       this.articulosFiltrados = [];

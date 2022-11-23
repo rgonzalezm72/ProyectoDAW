@@ -13,9 +13,12 @@ export class AppComponent implements OnInit {
   // @ts-ignore
   rolUsuario : string;
 
-  constructor(private iniciarSesionService: DataService) {
+  constructor(private dataService: DataService) {
   }
 
+  /**
+   * Inicializar firebase cuando se inicia la página web
+   */
   ngOnInit(): void {
     firebase.initializeApp({
       apiKey: "AIzaSyA5d0I57rVE1CSr6yxpD8vv_K0C6bOz1YI",
@@ -29,10 +32,16 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Método para comprobar si el usuario está logueado
+   */
   estaLogueado() {
-    return this.iniciarSesionService.estaLogueado();
+    return this.dataService.estaLogueado();
   }
 
+  /**
+   * Método para comprobar si el usuario es admin
+   */
   esAdmin() {
     firebase.database().ref().child("usuarios/" + firebase.auth().currentUser?.uid).on('value', (data) => {
       this.rolUsuario = data.child("rol").val();
@@ -40,6 +49,9 @@ export class AppComponent implements OnInit {
     return this.rolUsuario == "admin";
   }
 
+  /**
+   * Método para comprobar si el usuario es un usuario normal
+   */
   esUsuario() {
     firebase.database().ref().child("usuarios/" + firebase.auth().currentUser?.uid).on('value', (data) => {
       this.rolUsuario = data.child("rol").val();
@@ -47,7 +59,10 @@ export class AppComponent implements OnInit {
     return this.rolUsuario == "usuario";
   }
 
+  /**
+   * Método para cerrar sesión
+   */
   cerrarSesion() {
-    return this.iniciarSesionService.cerrarSesion();
+    return this.dataService.cerrarSesion();
   }
 }

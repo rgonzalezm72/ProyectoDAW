@@ -18,6 +18,9 @@ export class InicioComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+  /**
+   * Al iniciar se cargan los artículos mediante el DataService
+   */
   ngOnInit(): void {
     this.dataService.getArticulos().subscribe(listaArticulos => {
       this.articulos = listaArticulos;
