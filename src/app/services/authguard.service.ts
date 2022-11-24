@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import firebase from "firebase/compat/app";
+
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
@@ -8,6 +9,7 @@ export class AuthGuardService implements CanActivate {
 
   /**
    * Método para proteger las rutas exclusivas para usuarios registrados en caso de que no se haya iniciado sesión
+   * o en caso de que no sean admins
    */
   canActivate(): boolean {
     if (firebase.auth().currentUser === null) {
