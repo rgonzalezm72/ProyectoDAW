@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IArticulo} from "../../interfaces/i-articulo";
 import {DataService} from "../../services/data.service";
-import {IUsuario} from "../../interfaces/i-usuario";
 
 @Component({
   selector: 'app-desarrollo-personal',
@@ -12,9 +11,6 @@ export class DesarrolloPersonalComponent implements OnInit {
 
   // @ts-ignore
   articulos: IArticulo[] = null;
-
-  // @ts-ignore
-  usuarios: IUsuario[] = null;
 
   // @ts-ignore
   articulosFiltrados: IArticulo[] = null;
@@ -50,10 +46,6 @@ export class DesarrolloPersonalComponent implements OnInit {
           this.articulosFiltrados = this.articulos;
         }
       }
-    }, error => console.log(error), () => console.log('Fin de observable'));
-
-    this.dataService.getUsuarios().subscribe(listaUsuarios => {
-      this.usuarios = listaUsuarios;
     }, error => console.log(error), () => console.log('Fin de observable'));
   }
 }
