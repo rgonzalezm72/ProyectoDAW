@@ -46,6 +46,7 @@ export class DataService {
             this.idUsuario = firebase.auth().currentUser?.uid;
             this.getUsuario(this.idUsuario).subscribe(datosUsuario => {
               this.rol = datosUsuario.rol;
+              this.cookies.set("rol", this.rol);
             });
             this.router.navigate(['/']);
           }
@@ -64,6 +65,13 @@ export class DataService {
   }
 
   /**
+   * Método que obtiene el rol en las cookies
+   */
+  getRol() {
+    return this.cookies.get("rol");
+  }
+
+  /**
    * Método que comprueba si el usuario está logueado obteniendo el token en las cookies
    */
   estaLogueado() {
@@ -71,12 +79,14 @@ export class DataService {
   }
 
   /**
-   * Método que sirve para que el usuario cierre sesión borrando el token en las cookies
+   * Método que sirve para que el usuario cierre sesión borrando el token y el rol en las cookies
    */
   cerrarSesion() {
     firebase.auth().signOut().then(() => {
       this.token = "";
+      this.rol = "";
       this.cookies.set("token", this.token);
+      this.cookies.set("rol", this.rol);
       this.router.navigate(['/']);
     })
   }
@@ -104,6 +114,7 @@ export class DataService {
               this.idUsuario = firebase.auth().currentUser?.uid;
               this.getUsuario(this.idUsuario).subscribe(datosUsuario => {
                 this.rol = datosUsuario.rol;
+                this.cookies.set("rol", this.rol);
               });
               firebase.database().ref().child("usuarios").child(this.idUsuario).set({
                 apellidos: apellidos,
@@ -142,6 +153,7 @@ export class DataService {
             this.idUsuario = firebase.auth().currentUser?.uid;
             this.getUsuario(this.idUsuario).subscribe(datosUsuario => {
               this.rol = datosUsuario.rol;
+              this.cookies.set("rol", this.rol);
             });
             firebase.database().ref().child("usuarios").child(this.idUsuario).set({
               apellidos: apellidos,
@@ -184,16 +196,13 @@ export class DataService {
     } else {
       // @ts-ignore
       this.idUsuario = firebase.auth().currentUser?.uid;
-      this.getUsuario(this.idUsuario).subscribe(usuario => {
-        this.rol = usuario.rol;
-        if (this.rol === "admin") {
-          this.borrarUsuario();
-          this.editarAdmin(nombre, apellidos, email, password, "admin", this.idUsuario);
-        } else {
-          this.borrarUsuario();
-          this.registrarUsuario(nombre, apellidos, email, password, "usuario");
-        }
-      }, error => console.log(error), () => console.log('Fin de observable'));
+      if (this.cookies.get("rol") === "admin") {
+        this.borrarUsuario();
+        this.editarAdmin(nombre, apellidos, email, password, "admin", this.idUsuario);
+      } else {
+        this.borrarUsuario();
+        this.registrarUsuario(nombre, apellidos, email, password, "usuario");
+      }
     }
   }
 
@@ -207,7 +216,9 @@ export class DataService {
     firebase.database().ref().child("usuarios").child(this.idUsuario).remove();
     firebase.auth().currentUser?.delete();
     this.token = "";
+    this.rol = "";
     this.cookies.set("token", this.token);
+    this.cookies.set("rol", this.rol);
     this.router.navigate(['/']);
   }
 
