@@ -20,6 +20,7 @@ import { ConfiguracionComponent } from './components/configuracion/configuracion
 import { DataService } from "./services/data.service";
 import { CookieService } from "ngx-cookie-service";
 import {AuthGuardService as AuthGuard} from "./services/authguard.service";
+import {RoleGuardService as RoleGuard} from "./services/roleguard.service";
 
 
 @NgModule({
@@ -49,13 +50,13 @@ import {AuthGuardService as AuthGuard} from "./services/authguard.service";
       {path: 'sobre-nosotros', component: SobreNosotrosComponent},
       {path: 'login', component: IniciarSesionComponent},
       {path: 'registro', component: RegistroComponent},
-      {path: 'redactar', component: RedactarComponent, canActivate: [AuthGuard]},
+      {path: 'redactar', component: RedactarComponent, canActivate: [RoleGuard]},
       {path: 'configuracion', component: ConfiguracionComponent, canActivate: [AuthGuard]},
       {path: '', redirectTo: '/inicio', pathMatch:'full'},
       {path: '**', redirectTo: '/inicio', pathMatch:'full'},
     ])
   ],
-  providers: [DataService,CookieService, AuthGuard],
+  providers: [DataService,CookieService, AuthGuard, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -27,9 +27,6 @@ export class DataService {
   // @ts-ignore
   idUsuario: string;
 
-  // @ts-ignore
-  rol: string;
-
   /**
    * Método que sirve para que el usuario inicie sesión introduciendo el email y la contraseña
    * @param email - Email del usuario registrado
@@ -44,9 +41,6 @@ export class DataService {
             this.cookies.set("token", this.token);
             // @ts-ignore
             this.idUsuario = firebase.auth().currentUser?.uid;
-            this.getUsuario(this.idUsuario).subscribe(datosUsuario => {
-              this.rol = datosUsuario.rol;
-            });
             this.router.navigate(['/']);
           }
         );
@@ -102,9 +96,6 @@ export class DataService {
               this.cookies.set("token", this.token);
               // @ts-ignore
               this.idUsuario = firebase.auth().currentUser?.uid;
-              this.getUsuario(this.idUsuario).subscribe(datosUsuario => {
-                this.rol = datosUsuario.rol;
-              });
               firebase.database().ref().child("usuarios").child(this.idUsuario).set({
                 apellidos: apellidos,
                 email: email,
@@ -140,9 +131,6 @@ export class DataService {
             this.cookies.set("token", this.token);
             // @ts-ignore
             this.idUsuario = firebase.auth().currentUser?.uid;
-            this.getUsuario(this.idUsuario).subscribe(datosUsuario => {
-              this.rol = datosUsuario.rol;
-            });
             firebase.database().ref().child("usuarios").child(this.idUsuario).set({
               apellidos: apellidos,
               email: email,
