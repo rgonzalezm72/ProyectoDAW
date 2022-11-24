@@ -5,7 +5,7 @@
 </div>
 <hr>
 <div class="col-md-12 col-lg-12">
-  <select class="col-12" id="categoria"  [(ngModel)]="categoriaSeleccionada" (click)="cargarListaArticulos()">
+  <select class="col-12" id="categoria"  [(ngModel)]="categoriaSeleccionada" (change)="cargarListaArticulos()">
     <option *ngFor="let categoria of categorias, let i = index" [ngValue]="categoria">{{categorias[i]}}</option>
   </select>
 </div>
